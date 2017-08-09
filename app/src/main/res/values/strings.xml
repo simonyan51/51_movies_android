@@ -5,7 +5,7 @@
     <string name="auth_pass_err">Incorrect Password</string>
     <string name="et_hint_pass">Password</string>
     <string name="et_hint_email">Email</string>
-    <string name="tv_new_question">Already New?</string>
+    <string name="tv_new_question">Don\'t have account?</string>
     <string name="text_btn_auth_reg">Sign Up</string>
     <string name="et_reg_hint_username">Username</string>
     <string name="et_reg_hint_email">Email</string>

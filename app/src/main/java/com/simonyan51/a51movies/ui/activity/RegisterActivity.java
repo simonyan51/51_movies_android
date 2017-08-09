@@ -267,6 +267,8 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         user.setIsAdmin(0);
     }
 
+
+    //TODO check whats happened
     private void selectDateTime() {
         final SlideDateTimeListener listener = new SlideDateTimeListener() {
 
