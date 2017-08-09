@@ -22,4 +22,10 @@
     <string name="et_reg_hint_first_name">First Name</string>
     <string name="et_reg_hint_last_name">Last Name</string>
     <string name="et_reg_hint_date_birth">Date Birth</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_movie">Movies</string>
+    <string name="menu_fav">Favorites</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_message">Message</string>
 </resources>
