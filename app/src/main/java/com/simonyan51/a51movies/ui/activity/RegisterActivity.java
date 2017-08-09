@@ -14,7 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
+import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.simonyan51.a51movies.R;
 import com.simonyan51.a51movies.db.DatabaseHelper;
 import com.simonyan51.a51movies.db.query.DataQueryHandler;
@@ -24,6 +27,8 @@ import com.simonyan51.a51movies.pojo.User;
 import com.simonyan51.a51movies.util.CheckMessageHelper;
 import com.simonyan51.a51movies.util.Constant;
 import com.simonyan51.a51movies.util.PreferenceHelper;
+
+import java.util.Date;
 
 public class RegisterActivity extends BaseActivity implements UserDataQueryHandler.DataQueryListener,
         View.OnClickListener, RadioGroup.OnCheckedChangeListener {
@@ -41,7 +46,7 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     private EditText mEtUsername;
     private EditText mEtFirstName;
     private EditText mEtLastName;
-    private EditText mEtBirthDate;
+    private Button mBtnBirthDate;
     private RadioGroup mRgGender;
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -98,6 +103,9 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
+            case R.id.btn_reg_date_birth:
+                selectDateTime();
+                break;
             case R.id.btn_reg_submit:
                 register();
                 break;
@@ -189,7 +197,7 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         mEtUsername = (EditText) findViewById(R.id.et_reg_username);
         mEtFirstName = (EditText) findViewById(R.id.et_reg_first_name);
         mEtLastName = (EditText) findViewById(R.id.et_reg_last_name);
-        mEtBirthDate = (EditText) findViewById(R.id.et_reg_date_birth);
+        mBtnBirthDate = (Button) findViewById(R.id.btn_reg_date_birth);
         mRgGender = (RadioGroup) findViewById(R.id.rb_reg_gender);
         mEtEmail = (EditText) findViewById(R.id.et_reg_email);
         mEtPassword = (EditText) findViewById(R.id.et_reg_pass);
@@ -200,6 +208,7 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     private void setListeners() {
         mBtnRegister.setOnClickListener(this);
         mRgGender.setOnCheckedChangeListener(this);
+        mBtnBirthDate.setOnClickListener(this);
     }
 
     private void register() {
@@ -223,7 +232,10 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         if (mEtLastName.getText().toString().equals("")) {
             return false;
         }
-        if (mEtBirthDate.getText().toString().equals("")) {
+        if (mUser.getBirthDate().equals(null)) {
+            return false;
+        }
+        if (mUser.getGender().equals(null)) {
             return false;
         }
         if (mEtEmail.getText().toString().equals("")) {
@@ -249,11 +261,35 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         user.setUsername(mEtUsername.getText().toString());
         user.setFirstName(mEtFirstName.getText().toString());
         user.setLastName(mEtLastName.getText().toString());
-        user.setBirthDate(mEtBirthDate.getText().toString());
-//        user.setGender(mRgGender.getText().toString());
+//        user.setBirthDate(mEtBirthDate.getText().toString());
         user.setEmail(mEtEmail.getText().toString());
         user.setPassword(mEtPassword.getText().toString());
         user.setIsAdmin(0);
+    }
+
+    private void selectDateTime() {
+        final SlideDateTimeListener listener = new SlideDateTimeListener() {
+
+            @Override
+            public void onDateTimeSet(Date date)
+            {
+                mUser.setBirthDate(date.toString());
+
+            }
+
+            @Override
+            public void onDateTimeCancel()
+            {
+
+            }
+        };
+
+        new SlideDateTimePicker.Builder(getSupportFragmentManager())
+                .setListener(listener)
+                .setInitialDate(new Date())
+                .build()
+                .show();
+
     }
 
 

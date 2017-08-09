@@ -92,14 +92,14 @@ public class PreferenceHelper {
         setUserMail((user).getEmail());
         setUserPass((user).getPassword());
         setUserAdmin((user).getIsAdmin());
-
     }
 
     public void deleteUserData() {
-        mEditor.putLong(PREF_USER_ID, -1);
-        mEditor.putString(PREF_USER_MAIL, null);
-        mEditor.putString(PREF_USER_PASS, null);
-        mEditor.putInt(PREF_USER_ADMIN, -1);
+        setUserId(-1);
+        setUserMail(null);
+        setUserPass(null);
+        setUserAdmin(0);
+        mEditor.apply();
     }
 
     // ===========================================================
