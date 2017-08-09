@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">51 Movies</string>
+    <string name="auth_err">Wrong Email Or Password</string>
+    <string name="text_btn_auth_sign">Sign In</string>
+    <string name="auth_pass_err">Incorrect Password</string>
+    <string name="et_hint_pass">Password</string>
+    <string name="et_hint_email">Email</string>
+    <string name="tv_new_question">Already New?</string>
+    <string name="text_btn_auth_reg">Sign Up</string>
+    <string name="et_reg_hint_username">Username</string>
+    <string name="et_reg_hint_email">Email</string>
+    <string name="et_reg_hint_pass">Password</string>
+    <string name="et_reg_hint_pass_re">Repeat Password</string>
+    <string name="tv_reg_title">Enter all fields</string>
+    <string name="reg_title">Register</string>
+    <string name="pass_equal_err">Passwords not same</string>
+    <string name="valid_fields_err">Please, enter fields valid</string>
+    <string name="db_anonymous_err">Something went wrong, try again</string>
+    <string name="rb_male">Male</string>
+    <string name="rb_female">Female</string>
+    <string name="gender">Gender</string>
+    <string name="et_reg_hint_first_name">First Name</string>
+    <string name="et_reg_hint_last_name">Last Name</string>
+    <string name="et_reg_hint_date_birth">Date Birth</string>
+</resources>
