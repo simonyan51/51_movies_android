@@ -5,6 +5,6 @@
         android:id="@+id/menu_message"
         android:icon="@drawable/ic_message"
         android:title="@string/menu_message"
-        android:iconTint="@android:color/white"
+        app:itemIconTint="@android:color/white"
         app:showAsAction="ifRoom" />
 </menu>
