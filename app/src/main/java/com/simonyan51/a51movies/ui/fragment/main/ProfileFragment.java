@@ -2,6 +2,7 @@ package com.simonyan51.a51movies.ui.fragment.main;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.ImageViewTarget;
 import com.simonyan51.a51movies.R;
 import com.simonyan51.a51movies.ui.activity.AuthActivity;
 import com.simonyan51.a51movies.ui.fragment.BaseFragment;
@@ -30,6 +35,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     // Fields
     // ===========================================================
 
+    private ImageView mIvProfileImage;
     private Button mLogoutButton;
 
     // ===========================================================
@@ -59,8 +65,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        init();
         findViews(view);
+        init();
         setListeners();
         return view;
     }
@@ -95,6 +101,11 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
     private void init() {
         setActionBarTitle(getString(R.string.menu_profile));
+
+        Glide.with(mIvProfileImage.getContext())
+                .load("http://www.lilavatihospital.com/Admin/Doctors/doctor.jpg")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(mIvProfileImage);
     }
 
     private void setListeners() {
@@ -103,6 +114,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
     private void findViews(View view) {
         mLogoutButton = view.findViewById(R.id.logout);
+        mIvProfileImage = view.findViewById(R.id.iv_profile_image);
     }
 
     private void logout() {

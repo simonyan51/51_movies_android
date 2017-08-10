@@ -77,9 +77,9 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
         findViews();
         setListeners();
+        init();
     }
 
     @Override

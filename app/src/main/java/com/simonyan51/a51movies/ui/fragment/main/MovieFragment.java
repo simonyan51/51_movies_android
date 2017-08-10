@@ -53,9 +53,9 @@ public class MovieFragment extends BaseFragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
-        init();
         findViews(view);
         setListeners();
+        init();
         return view;
     }
 

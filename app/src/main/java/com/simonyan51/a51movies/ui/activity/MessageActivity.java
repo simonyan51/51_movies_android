@@ -34,9 +34,9 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
         findViews();
         setListeners();
+        init();
     }
 
     @Override

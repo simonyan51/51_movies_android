@@ -1,20 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.simonyan51.a51movies.ui.fragment.main.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:layout_height="wrap_content">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profile Fragment" />
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        />
+        android:layout_height="match_parent"
+        tools:context="com.simonyan51.a51movies.ui.fragment.main.MovieFragment">
 
-</LinearLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:id="@+id/iv_profile_image"
+            android:layout_height="250dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/darker_gray"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent" />
+        <Button android:id="@+id/logout"
+            android:layout_marginTop="320dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</ScrollView>

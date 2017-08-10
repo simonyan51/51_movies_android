@@ -52,9 +52,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
         findViews();
         setListeners();
+        init();
     }
 
 
@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         int id = item.getItemId();
         switch (id) {
             case R.id.action_home:
-                openScreen(HomeFragment.newInstance(), R.id.main_container, false);
+                openScreen(HomeFragment.newInstance(), R.id.main_container, true);
                 break;
             case R.id.action_search:
                 openScreen(SearchFragment.newInstance(), R.id.main_container, true);
