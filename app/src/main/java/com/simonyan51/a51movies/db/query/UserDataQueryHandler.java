@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.simonyan51.a51movies.db.cursor.CursorReader;
 import com.simonyan51.a51movies.db.table.UserDatabase;
@@ -59,9 +60,7 @@ public class UserDataQueryHandler extends DataQueryHandler {
 
     @Override
     public synchronized void query(int token, Object o) {
-
         new Thread(() -> {
-
             Object result = null;
             Cursor cursor;
 
@@ -71,7 +70,7 @@ public class UserDataQueryHandler extends DataQueryHandler {
 
                 case UserToken.GET:
 
-                    int id = (int) o;
+                    long id = (long) o;
 
                     cursor = db.query(
                             UserDatabase.TABLE_NAME,

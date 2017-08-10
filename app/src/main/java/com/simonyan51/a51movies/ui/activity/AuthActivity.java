@@ -146,22 +146,7 @@ public class AuthActivity extends BaseActivity implements DataQueryHandler.DataQ
         mDataHelper = new DatabaseHelper(this, UserDatabase.TABLE_NAME, UserDatabase.CREATE_TABLE);
         mDataQueryHandler = new UserDataQueryHandler(mDataHelper, this);
 
-        mThreadHandler = new Handler(Looper.getMainLooper()) {
-
-            @Override
-            public void handleMessage(Message inputMessage) {
-                switch (inputMessage.getData().getInt(CheckMessageHelper.KEY)) {
-                    case CheckMessageHelper.SUCCESS:
-                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case CheckMessageHelper.FAILED:
-                        Snackbar.make(findViewById(R.id.sc_auth_container), R.string.auth_err, Snackbar.LENGTH_LONG).show();
-                        break;
-                }
-            }
-        };
+        handleMessage();
 
     }
 
@@ -186,6 +171,25 @@ public class AuthActivity extends BaseActivity implements DataQueryHandler.DataQ
     private void register() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    private void handleMessage() {
+        mThreadHandler = new Handler(Looper.getMainLooper()) {
+
+            @Override
+            public void handleMessage(Message inputMessage) {
+                switch (inputMessage.getData().getInt(CheckMessageHelper.KEY)) {
+                    case CheckMessageHelper.SUCCESS:
+                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case CheckMessageHelper.FAILED:
+                        Snackbar.make(findViewById(R.id.sc_auth_container), R.string.auth_err, Snackbar.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        };
     }
 
     // ===========================================================
