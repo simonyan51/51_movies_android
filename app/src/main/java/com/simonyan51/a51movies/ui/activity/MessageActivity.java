@@ -58,8 +58,8 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.home:
-                finish();
+            case android.R.id.home:
+                onBackPressed();
                 break;
         }
         return super.onOptionsItemSelected(item);
