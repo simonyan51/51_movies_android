@@ -25,4 +25,8 @@ public class Constant {
         public static final String FEMALE = "Female";
     }
 
+    public class Argument {
+        public static final String ARGUMENT_USER = "ARGUMENT_USER";
+    }
+
 }

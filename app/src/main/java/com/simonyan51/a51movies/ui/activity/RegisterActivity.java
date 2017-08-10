@@ -2,6 +2,7 @@ package com.simonyan51.a51movies.ui.activity;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.text.DateFormat;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -46,6 +47,8 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     private EditText mEtUsername;
     private EditText mEtFirstName;
     private EditText mEtLastName;
+    //TODO just for simple
+    private EditText mEtBirthDate;
     private Button mBtnBirthDate;
     private RadioGroup mRgGender;
     private EditText mEtEmail;
@@ -74,7 +77,6 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setActionBarTitle(getString(R.string.reg_title));
         init();
         findViews();
         setListeners();
@@ -169,8 +171,10 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
     // ===========================================================
 
     private void init() {
+        setActionBarTitle(getString(R.string.reg_title));
 
         mUser = new User();
+        mUser.setGender(Constant.Gender.MALE);
 
         mDbHelper = new DatabaseHelper(this, UserDatabase.TABLE_NAME, UserDatabase.CREATE_TABLE);
         mUserQueryHandler = new UserDataQueryHandler(mDbHelper, this);
@@ -197,6 +201,8 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         mEtUsername = (EditText) findViewById(R.id.et_reg_username);
         mEtFirstName = (EditText) findViewById(R.id.et_reg_first_name);
         mEtLastName = (EditText) findViewById(R.id.et_reg_last_name);
+        //TODO just for simple
+        mEtBirthDate = (EditText) findViewById(R.id.et_reg_birth_date);
         mBtnBirthDate = (Button) findViewById(R.id.btn_reg_date_birth);
         mRgGender = (RadioGroup) findViewById(R.id.rb_reg_gender);
         mEtEmail = (EditText) findViewById(R.id.et_reg_email);
@@ -232,10 +238,10 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         if (mEtLastName.getText().toString().equals("")) {
             return false;
         }
-        if (mUser.getBirthDate().equals(null)) {
-            return false;
-        }
-        if (mUser.getGender().equals(null)) {
+//        if (mUser.getBirthDate().equals(null)) {
+//            return false;
+//        }
+        if (mUser.getGender().equals("")) {
             return false;
         }
         if (mEtEmail.getText().toString().equals("")) {
@@ -261,7 +267,7 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
         user.setUsername(mEtUsername.getText().toString());
         user.setFirstName(mEtFirstName.getText().toString());
         user.setLastName(mEtLastName.getText().toString());
-//        user.setBirthDate(mEtBirthDate.getText().toString());
+        user.setBirthDate(mEtBirthDate.getText().toString());
         user.setEmail(mEtEmail.getText().toString());
         user.setPassword(mEtPassword.getText().toString());
         user.setIsAdmin(0);
@@ -270,7 +276,7 @@ public class RegisterActivity extends BaseActivity implements UserDataQueryHandl
 
     //TODO check whats happened
     private void selectDateTime() {
-        final SlideDateTimeListener listener = new SlideDateTimeListener() {
+        SlideDateTimeListener listener = new SlideDateTimeListener() {
 
             @Override
             public void onDateTimeSet(Date date)

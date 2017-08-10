@@ -1,7 +1,8 @@
 package com.simonyan51.a51movies.util;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
 /**
  * Created by simonyan51 on 07.08.2017.
