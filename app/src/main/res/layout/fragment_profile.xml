@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray_holo_dark"
-                android:text="Gnel Simonyan"
+                android:text=""
                 />
         </LinearLayout>
         <Button android:id="@+id/logout"
